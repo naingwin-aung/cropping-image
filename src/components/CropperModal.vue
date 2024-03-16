@@ -30,6 +30,8 @@
                 <input
                   type="file"
                   id="file"
+                  accept="image/*" 
+                  capture="environment"
                   class="hidden"
                   @change="getUploadedImage"
                 />
