@@ -8,7 +8,7 @@
         >
           <div class="flex items-center py-4 border-b border-b-gray-300">
             <div class="text-[22px] font-semibold w-full text-center">
-              Choose Images
+              Choose Image
             </div>
             <div
               @click="$emit('close', false)"
@@ -47,7 +47,7 @@
               </div>
 
               <div v-show="!uploadedImage && isOpenCamera" class="pb-4">
-                <video v-show="!isNewPhoto" ref="video" class="aspect-square"/>
+                <video autoplay v-show="!isNewPhoto" ref="video" class="aspect-square"/>
                 <canvas
                   v-show="isNewPhoto"
                   ref="canvas"
@@ -137,6 +137,7 @@ const startCamera = async () => {
         width: { max: 1024 },
         height: { max: 1024 },
         aspectRatio: { ideal: 1 },
+        facingMode: 'user'
       },
     });
     video.value.srcObject = stream;
