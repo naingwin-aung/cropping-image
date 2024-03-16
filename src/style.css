@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*::-webkit-media-controls-panel {
+/* *::-webkit-media-controls-panel {
   display: none!important;
   -webkit-appearance: none;
 }
@@ -15,4 +15,4 @@
 *::-webkit-media-controls-start-playback-button {
   display: none!important;
   -webkit-appearance: none;
-}
+} */
