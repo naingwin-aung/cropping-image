@@ -1,6 +1,6 @@
 <template>
-  <button @click="openCropper = true" class="border m-10 px-10 py-5 border-gray-500 bg-slate-700 text-white">
-    Change
+  <button @click="openCropper = true" class="border m-10 px-10 py-5 border-gray-500 bg-slate-700 text-white rounded-md">
+    Choose Upload Image
   </button>
   <CropperModal v-if="openCropper" @data="data = $event" @close="openCropper = $event"/>
 </template>
