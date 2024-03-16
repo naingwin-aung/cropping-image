@@ -30,7 +30,7 @@
                 <input
                   type="file"
                   id="file"
-                  accept="image/*" 
+                  accept="image/*"
                   capture="environment"
                   class="hidden"
                   @change="getUploadedImage"
@@ -47,7 +47,15 @@
               </div>
 
               <div v-show="!uploadedImage && isOpenCamera" class="pb-4">
-                <video autoplay v-show="!isNewPhoto" ref="video" class="aspect-square"/>
+                <div class="w-full mx-h-[500px]">
+                    <video
+                      autoplay
+                      v-show="!isNewPhoto"
+                      ref="video"
+                      class="aspect-square w-full h-full object-cover"
+                      playsinline=""
+                    />
+                </div>
                 <canvas
                   v-show="isNewPhoto"
                   ref="canvas"
@@ -106,7 +114,7 @@
 </template>
 
 <script setup>
-import {ref, onUnmounted} from 'vue';
+import { ref, onUnmounted } from "vue";
 import { Cropper } from "vue-advanced-cropper";
 import "vue-advanced-cropper/dist/style.css";
 
@@ -137,13 +145,13 @@ const startCamera = async () => {
         width: { max: 1024 },
         height: { max: 1024 },
         aspectRatio: { ideal: 1 },
-        facingMode: 'user'
+        facingMode: "user",
       },
     });
     video.value.srcObject = stream;
     video.value.play();
 
-    video.value.style.transform = 'scaleX(-1)';
+    video.value.style.transform = "scaleX(-1)";
   }
 };
 
@@ -156,9 +164,15 @@ const takePhoto = () => {
 
   let context = canvasLocal.getContext("2d");
   context.imageSmoothingEnabled = true;
-  context.imageSmoothingQuality = 'high';
+  context.imageSmoothingQuality = "high";
   context.scale(-1, 1);
-  context.drawImage(videoLocal, -canvasLocal.width, 0, canvasLocal.width, canvasLocal.height);
+  context.drawImage(
+    videoLocal,
+    -canvasLocal.width,
+    0,
+    canvasLocal.width,
+    canvasLocal.height
+  );
   context.setTransform(1, 0, 0, 1, 0, 0);
 
   isNewPhoto.value = true;
@@ -190,9 +204,9 @@ const cropImage = async () => {
 };
 
 onUnmounted(() => {
-    if(video.value) {
-        video.value.pause();
-        video.value.currentTime = 0;
-    }
+  if (video.value) {
+    video.value.pause();
+    video.value.currentTime = 0;
+  }
 });
 </script>
