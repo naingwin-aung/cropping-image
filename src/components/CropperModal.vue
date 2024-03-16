@@ -8,7 +8,7 @@
         >
           <div class="flex items-center py-4 border-b border-b-gray-300">
             <div class="text-[22px] font-semibold w-full text-center">
-              Choose Images
+              Choose Image
             </div>
             <div
               @click="$emit('close', false)"
